@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConstraintSatisfactionProblemSolvingExplorer.Properties
+namespace SolverClient.Properties
 {
 
 

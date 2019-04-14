@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4980ADCA-C5CB-4876-8307-EB6CB40AE408}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ConstraintSatisfactionProblemSolver</RootNamespace>
+    <AssemblyName>ConstraintSatisfactionProblemSolver</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Data\DataContainer.cs" />
+    <Compile Include="Data\Env.cs" />
+    <Compile Include="FutoshikiProblem\BackTracking.cs" />
+    <Compile Include="FutoshikiProblem\ForwardChecking.cs" />
+    <Compile Include="Loader\ToHtmlExporter.cs" />
+    <Compile Include="View\ConsoleInterface.cs" />
+    <Compile Include="Loader\DataParser.cs" />
+    <Compile Include="Loader\FileLoader.cs" />
+    <Compile Include="FutoshikiProblem\Futoshiki.cs" />
+    <Compile Include="Model\RelationRestriction.cs" />
+    <Compile Include="Utils\BoardFactory.cs" />
+    <Compile Include="Model\Field.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SkyscrapperProblem\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\ai-lab2-data\README.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_4_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_4_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_4_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_5_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_5_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_5_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_6_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_6_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_6_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_7_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_7_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_7_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_8_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_8_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_8_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_9_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_9_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_futo_9_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_4_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_4_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_4_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_4_3.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_4_4.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_5_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_5_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_5_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_5_3.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_5_4.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_6_0.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_6_1.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_6_2.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_6_3.txt" />
+    <Content Include="resources\ai-lab2-data\test_sky_6_4.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

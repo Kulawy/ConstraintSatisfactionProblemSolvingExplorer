@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConstraintSatisfactionProblemSolvingExplorer.Properties
+namespace SolverClient.Properties
 {
 
 
@@ -44,7 +44,7 @@ namespace ConstraintSatisfactionProblemSolvingExplorer.Properties
             {
                 if ((resourceMan == null))
                 {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("ConstraintSatisfactionProblemSolvingExplorer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("SolverClient.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
