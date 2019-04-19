@@ -25,7 +25,7 @@ namespace ConstraintSatisfactionProblemSolver.Loader
             using (var streamReader = new StreamReader(fileStream, Encoding.UTF8))
             {
                 FitDimensionOfProblem(streamReader.ReadLine());
-                _container.Problem = new Futoshiki(_container.DimensionOfProblem);
+                _container.ProblemFuto = new Futoshiki(_container.DimensionOfProblem);
 
                 streamReader.ReadLine();
 
@@ -51,11 +51,11 @@ namespace ConstraintSatisfactionProblemSolver.Loader
             char[] firstField = splitContent[0].ToArray();
             char[] secondField = splitContent[1].ToArray();
 
-            _container.Problem.RelationRestrictions
+            _container.ProblemFuto.RelationRestrictions
                 .Add(
                     new Model.RelationRestriction(
-                        _container.Problem.Board[Convert.ToInt32(firstField[0])-65, int.Parse(firstField[1].ToString())-1],
-                        _container.Problem.Board[Convert.ToInt32(secondField[0])-65, int.Parse(secondField[1].ToString())-1]
+                        _container.ProblemFuto.Board[Convert.ToInt32(firstField[0])-65, int.Parse(firstField[1].ToString())-1],
+                        _container.ProblemFuto.Board[Convert.ToInt32(secondField[0])-65, int.Parse(secondField[1].ToString())-1]
                     )
                 );
 
@@ -81,9 +81,9 @@ namespace ConstraintSatisfactionProblemSolver.Loader
             }
             for(int i=0; i < splitContent.Length ; i++)
             {
-                _container.Problem.Board[rowNum, i] = new Field(Int32.Parse(splitContent[i]), _container.Problem.Domain);
-                _container.Problem.Board[rowNum, i].RowNum = rowNum;
-                _container.Problem.Board[rowNum, i].ColumnNum = i;
+                _container.ProblemFuto.Board[rowNum, i] = new Field(Int32.Parse(splitContent[i]), _container.ProblemFuto.Domain);
+                _container.ProblemFuto.Board[rowNum, i].RowNum = rowNum;
+                _container.ProblemFuto.Board[rowNum, i].ColumnNum = i;
             }
         }
 

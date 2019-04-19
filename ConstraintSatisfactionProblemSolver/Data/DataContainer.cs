@@ -1,4 +1,5 @@
 ﻿using ConstraintSatisfactionProblemSolver.FutoshikiProblem;
+using ConstraintSatisfactionProblemSolver.SkyscrapperProblem;
 using ConstraintSatisfactionProblemSolver.Utils;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,8 @@ namespace ConstraintSatisfactionProblemSolver.Data
 
         private static DataContainer _oInstance = null;
         public int DimensionOfProblem { get; set; }
-        public Futoshiki Problem { get; set; }
+        public Futoshiki ProblemFuto { get; set; }
+        public Skyscraper ProblemSky { get; set; }
 
         public List<Field[,]> FoundSolutions { get; set; }
 

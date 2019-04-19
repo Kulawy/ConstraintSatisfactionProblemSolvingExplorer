@@ -134,8 +134,8 @@ namespace ConstraintSatisfactionProblemSolver.View
             Console.WriteLine("_________________________________________________________");
             Console.WriteLine("Dimension: {0}", box.DimensionOfProblem);
             Console.WriteLine();
-            Console.WriteLine(box.Problem);
-            Console.WriteLine(box.Problem.RestrictionsToString());
+            Console.WriteLine(box.ProblemFuto);
+            Console.WriteLine(box.ProblemFuto.RestrictionsToString());
 
         }
 

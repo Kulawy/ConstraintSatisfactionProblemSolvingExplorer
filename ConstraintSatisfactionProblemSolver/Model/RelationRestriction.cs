@@ -5,31 +5,54 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+///<sumary>
+///
+/// by Jakub Geroń
+///</sumary> 
+     
+
+
 namespace ConstraintSatisfactionProblemSolver.Model
 {
-    public class RelationRestriction
+    public class RelationRestriction : ICloneable
     {
-        private Field _one;
-        private Field _two;
+        //public Field One;
+        //public Field Two;
+
+        public  int OneRowNumber { get; set; }
+        public int OneColNumber { get; set; }
+        public int TwoRowNumber { get; set; }
+        public int TwoColNumber { get; set; }
+
         private int _restrict;
+
+        public RelationRestriction()
+        {
+            _restrict = -1;
+        }
 
         public RelationRestriction(Field one, Field two, int restriction)
         {
-            _one = one;
-            _two = two;
+            OneRowNumber = one.RowNum;
+            OneColNumber = one.ColumnNum;
+            TwoRowNumber = two.RowNum;
+            TwoColNumber = two.ColumnNum;
+
             _restrict = restriction;
         }
 
         public RelationRestriction(Field one, Field two)
         {
-            _one = one;
-            _two = two;
+            OneRowNumber = one.RowNum;
+            OneColNumber = one.ColumnNum;
+            TwoRowNumber = two.RowNum;
+            TwoColNumber = two.ColumnNum;
             _restrict = -1;
         }
 
-        public bool CheckRestrictionIfSmaller()
+        public bool CheckRestrictionIfSmaller(int oneValue, int twoValue)
         {
-            if (_one.Value < _two.Value)
+            if (oneValue < twoValue)
             {
                 return true;
             }
@@ -38,19 +61,20 @@ namespace ConstraintSatisfactionProblemSolver.Model
                 return false;
             }
         }
+        
 
-        public bool CheckRestriction()
+        public bool CheckRestriction(int oneValue, int twoValue)
         {
-            if ( _one.Value != 0 && _two.Value != 0)
+            if ( oneValue != 0 && twoValue != 0)
             {
                 switch (_restrict)
                 {
                     case -1:
-                        return (_one.Value < _two.Value);
+                        return (oneValue < twoValue);
                     case 1:
-                        return (_one.Value > _two.Value);
+                        return (oneValue > twoValue);
                     default:
-                        return _one.Value == _two.Value;
+                        return oneValue == twoValue;
                 }
             }
             else
@@ -61,9 +85,20 @@ namespace ConstraintSatisfactionProblemSolver.Model
             
         }
 
+        public Object Clone()
+        {
+            RelationRestriction newValue = new RelationRestriction();
+            newValue.OneRowNumber = OneRowNumber;
+            newValue.OneColNumber = OneColNumber;
+            newValue.TwoRowNumber = TwoRowNumber;
+            newValue.TwoColNumber = TwoColNumber;
+            newValue._restrict = _restrict;
+            return newValue;
+        }
+
         public override string ToString()
         {
-            string result = _one.RowNum.ToString() + "/" + _one.ColumnNum.ToString();
+            string result = (OneRowNumber+1).ToString() + "/" + (OneColNumber+1).ToString();
             switch (_restrict)
             {
                 case (-1):
@@ -73,7 +108,7 @@ namespace ConstraintSatisfactionProblemSolver.Model
                     result += "=";
                     break;
             }
-            result += _two.RowNum.ToString() + "/" + _two.ColumnNum.ToString();
+            result += (TwoRowNumber+1).ToString() + "/" + (TwoColNumber+1).ToString();
             return result;
         }
 

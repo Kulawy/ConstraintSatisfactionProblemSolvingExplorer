@@ -48,6 +48,7 @@
     <Compile Include="FutoshikiProblem\BackTracking.cs" />
     <Compile Include="FutoshikiProblem\ForwardChecking.cs" />
     <Compile Include="Loader\ToHtmlExporter.cs" />
+    <Compile Include="SkyscrapperProblem\Skyscraper.cs" />
     <Compile Include="View\ConsoleInterface.cs" />
     <Compile Include="Loader\DataParser.cs" />
     <Compile Include="Loader\FileLoader.cs" />
@@ -61,9 +62,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="SkyscrapperProblem\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="resources\ai-lab2-data\README.txt" />
     <Content Include="resources\ai-lab2-data\test_futo_4_0.txt" />

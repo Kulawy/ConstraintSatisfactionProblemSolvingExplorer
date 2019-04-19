@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SolverClient"
         mc:Ignorable="d"
-        Title="CSP-SOLVER" Height="800" Width="1280">
+        Title="CSP-SOLVER" Height="800" Width="1280" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Background="#FF2E2D2D">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40*"/>
@@ -17,31 +17,31 @@
         <!--<WebBrowser x:Name="SolutionWindow" HorizontalAlignment="Left" Height="749" Margin="0,10,0,0" VerticalAlignment="Top" Width="400" Grid.Column="3" OpacityMask="White"/>-->
         <GroupBox x:Name="TypeHeuristic" Grid.Column="1" Header="HEURISTIC TYPE" HorizontalAlignment="Left" Height="290" Margin="10,10,0,0" VerticalAlignment="Top" Width="380" FontSize="20" Foreground="#FFFBFBFB" BorderBrush="#FF9BA2A8">
             <StackPanel HorizontalAlignment="Left" Height="235" Margin="9,10,0,0" VerticalAlignment="Top" Width="349">
-                <RadioButton x:Name="TypeHeuristic1" Content="OneByOne" GroupName="HeuristicType" />
-                <RadioButton x:Name="TypeHeuristic2" Content="RandomPick" GroupName="HeuristicType"/>
-                <RadioButton x:Name="TypeHeuristic3" Content="Most Constraint" GroupName="HeuristicType"/>
-                <RadioButton x:Name="TypeHeuristic4" Content="Smalles Domain" GroupName="HeuristicType"/>
+                <RadioButton x:Name="TypeHeuristic1" Content="OneByOne" GroupName="HeuristicType" Foreground="#FF817D7D" />
+                <RadioButton x:Name="TypeHeuristic2" Content="RandomPick" GroupName="HeuristicType" Foreground="#FF817D7D"/>
+                <RadioButton x:Name="TypeHeuristic3" Content="Most Constraint" GroupName="HeuristicType" Foreground="#FF817D7D"/>
+                <RadioButton x:Name="TypeHeuristic4" Content="Smalles Domain" GroupName="HeuristicType" Foreground="#FF817D7D"/>
             </StackPanel>
         </GroupBox>
         <GroupBox x:Name="TypeAlgorythm" Grid.Column="1" Header="ALGORYTHM TYPE" HorizontalAlignment="Left" Height="200" Margin="10,305,0,0" VerticalAlignment="Top" Width="380" FontSize="20" Foreground="White">
             <StackPanel HorizontalAlignment="Left" Height="150" VerticalAlignment="Top" Width="349" MinWidth="200" MinHeight="160" Margin="10,10,0,-4">
-                <RadioButton x:Name="TypeAlg1" Content="Backward Check" />
-                <RadioButton x:Name="TypeAlg2" Content="Forward Checking"/>
+                <RadioButton x:Name="TypeAlg1" Content="Backward Check" Foreground="#FF837575" />
+                <RadioButton x:Name="TypeAlg2" Content="Forward Checking" Foreground="#FF837575"/>
             </StackPanel>
 
         </GroupBox>
-        <Label Content="Searching Time (mm:ss:1/100):" Grid.Column="2" HorizontalAlignment="Left" Height="40" Margin="10,25,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
-        <Label Content="Solutions count:" Grid.Column="2" HorizontalAlignment="Left" Height="40" Margin="10,115,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
-        <Label Content="00:00:00" Grid.Column="2" HorizontalAlignment="Left" Height="45" Margin="10,65,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
-        <Label Content="1" Grid.Column="2" HorizontalAlignment="Left" Height="45" Margin="10,160,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
+        <Label Content="Searching Time (ms):" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,407,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
+        <Label Content="Solutions count:" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,497,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
+        <Label x:Name="Label_TimeEval" Content="000" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,447,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
+        <Label x:Name="Label_SolutionCount" Content="?" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,542,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
         <Button x:Name="Btn_Start" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,705,0,0" VerticalAlignment="Top" Width="180" Height="45" FontSize="18" Click="Btn_Start_Click"/>
         <Button x:Name="Btm_Clear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="202,705,0,0" VerticalAlignment="Top" Width="188" Height="45" FontSize="18" Click="Btm_Clear_Click"/>
         <TextBox x:Name="TextBox_FileName" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,570,0,0" TextWrapping="Wrap" Text="test_futo_4_0.txt" VerticalAlignment="Top" Width="380" FontSize="20" FontWeight="Medium" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
         <Label Content="Name of file to load: " Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,525,0,0" VerticalAlignment="Top" Width="380" Foreground="#FF86888F" FontSize="20"/>
-        <ScrollViewer Grid.Column="2" Margin="10,500,10,19" VerticalScrollBarVisibility="Auto" Background="Black" AutomationProperties.IsColumnHeader="True">
+        <ScrollViewer Grid.Column="2" Margin="10,25,10,19" VerticalScrollBarVisibility="Auto" Background="Black" AutomationProperties.IsColumnHeader="True">
             <TextBlock x:Name="TextBlock_Problem" Grid.Column="2"  TextWrapping="Wrap" Text="PROBLEM CONTENT" VerticalAlignment="Top" Foreground="White" FontSize="16" Cursor="Pen" HorizontalAlignment="Center"  />
         </ScrollViewer>
-        <ScrollViewer Grid.Column="3" Margin="10,10,10,19" VerticalScrollBarVisibility="Auto" Background="Black">
+        <ScrollViewer Grid.Column="3" Margin="10,29,10,372" VerticalScrollBarVisibility="Auto" Background="Black" IsManipulationEnabled="True">
             <TextBlock x:Name="TextBlock_Result" Grid.Column="3" HorizontalAlignment="Center" TextWrapping="Wrap" Text="RESULT" VerticalAlignment="Top"  Foreground="White" FontSize="16"/>
         </ScrollViewer>
         <GridSplitter Grid.Column="2" HorizontalAlignment="Left" Height="760" Margin="399,5,0,0" VerticalAlignment="Top" Width="3" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
@@ -54,6 +54,10 @@
                 </TransformGroup>
             </GridSplitter.RenderTransform>
         </GridSplitter>
+        <RadioButton x:Name="RadioButton_Futoshiki" Content="Futoshiki" Grid.Column="1" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType"/>
+        <RadioButton x:Name="RadioButton_Skyscraper" Content="Skyscraper" Grid.Column="1" HorizontalAlignment="Left" Margin="202,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType" />
+        <Label Content="Iterations number:" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,595,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
+        <Label x:Name="Label_IterationsNum" Content="?" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,640,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
 
 
     </Grid>

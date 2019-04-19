@@ -14,16 +14,15 @@ namespace ConstraintSatisfactionProblemSolver.FutoshikiProblem {
         public Field[,] Board { get; set; }
         public List<RelationRestriction> RelationRestrictions { get; set; }
         
-
-
+       
         public Futoshiki(int n)
         {
             _sizeOfProblem = n;
             Board = new Field[n, n];
             Domain = new List<int>(n);
-            for(short i=0; i<n; i++)
+            for(int i=0; i<n; i++)
             {
-                Domain[i] = i + 1;
+                Domain.Add( i + 1);
             }
 
             RelationRestrictions = new List<RelationRestriction>();
@@ -60,16 +59,76 @@ namespace ConstraintSatisfactionProblemSolver.FutoshikiProblem {
             return one.Value < two.Value;
         }
 
-        public bool CheckConstraints()
+        public bool CheckConstraints(Field f, int value)
         {
-            for(int i = 0; i < RelationRestrictions.Count; i++)
+            foreach(RelationRestriction r in RelationRestrictions)
             {
-                if (!RelationRestrictions[i].CheckRestrictionIfSmaller())
+                if ( (r.OneRowNumber == f.RowNum && r.OneColNumber == f.ColumnNum)  && this.Board[r.TwoRowNumber, r.TwoColNumber].Value != 0)
                 {
-                    return false;
+                    //r.One.Value = value;
+                    if (r.CheckRestrictionIfSmaller( value,this.Board[r.TwoRowNumber, r.TwoColNumber].Value))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        this.Board[r.OneRowNumber, r.OneColNumber].Value = 0;
+                        //r.One.Value = 0;
+                        return false;
+                    }
+                }
+
+                if ( (r.TwoRowNumber == f.RowNum && r.TwoColNumber == f.ColumnNum) && this.Board[r.OneRowNumber, r.OneColNumber].Value != 0)
+                {
+                    //r.Two.Value = value;
+                    if (r.CheckRestrictionIfSmaller( this.Board[r.OneRowNumber, r.OneColNumber].Value, value))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        this.Board[r.TwoRowNumber, r.TwoColNumber].Value = 0;
+                        //r.Two.Value = 0;
+                        return false;
+                    }
+                    
                 }
             }
-            return true;
+            return true ;
+        }
+
+        //public bool CheckConstraints()
+        //{
+        //    for(int i = 0; i < RelationRestrictions.Count; i++)
+        //    {
+        //        if (!RelationRestrictions[i].CheckRestrictionIfSmaller())
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
+
+        public bool IsRepetingInRowOrColumn(Field field, int value)
+        {
+            for(int i = 0; i < Board.GetLength(0); i++)
+            {
+                if ( field.ColumnNum != i )
+                {
+                    if (Board[field.RowNum, i].Value == value)
+                    {
+                        return true;
+                    }
+                }
+                if ( field.RowNum != i)
+                {
+                    if (Board[i, field.ColumnNum].Value == value)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
         }
 
         public bool CheckIfSolved() {
@@ -92,17 +151,20 @@ namespace ConstraintSatisfactionProblemSolver.FutoshikiProblem {
             {
                 for(int j = 0; j < _sizeOfProblem; j++)
                 {
-                    newFuto.Board[i, j] = Board[i, j];
+                    newFuto.Board[i, j] = (Field) Board[i, j].Clone();
                 }
             }
             Domain = new List<int>(_sizeOfProblem);
-            for (short i = 0; i < _sizeOfProblem; i++)
+            for (int i = 0; i < _sizeOfProblem; i++)
             {
-                Domain[i] = i + 1;
+                Domain.Add(i + 1);
             }
-            RelationRestrictions = this.RelationRestrictions;
 
-
+            newFuto.RelationRestrictions = new List<RelationRestriction>();
+            foreach (RelationRestriction r in RelationRestrictions)
+            {
+                newFuto.RelationRestrictions.Add((RelationRestriction) r.Clone());
+            }
             return newFuto;
         }
 

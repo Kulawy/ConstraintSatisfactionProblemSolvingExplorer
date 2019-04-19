@@ -1,7 +1,9 @@
 ﻿using ConstraintSatisfactionProblemSolver.Data;
+using ConstraintSatisfactionProblemSolver.FutoshikiProblem;
 using ConstraintSatisfactionProblemSolver.Loader;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +17,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+///<sumary>
+///
+/// by Jakub Geroń
+///</sumary> 
+
 namespace SolverClient
 {
     /// <summary>
@@ -24,12 +31,20 @@ namespace SolverClient
     public partial class MainWindow : Window
     {
         private FileLoader _fileLoader;
-        private string _resultText;
-        DataContainer box;
+        //private string _resultText;
+        private int _problemType;
+        private DataContainer _box;
+        private List<Futoshiki> _solutionsFuto;
+
+        private long _iterations;
+        
+        private Stopwatch _watch;
+        
 
         public MainWindow()
         {
             InitializeComponent();
+            _watch = new Stopwatch();
         }
 
         private void Btn_Start_Click(object sender, RoutedEventArgs e)
@@ -38,8 +53,14 @@ namespace SolverClient
             DoLoad();
             ParseData();
             DisplayLoadedData();
+            _watch.Reset();
+            _watch.Start();
+            SolveProblem();
+            _watch.Stop();
+            DisplaySolutions();
 
         }
+        
 
         private void CheckInput()
         {
@@ -69,6 +90,15 @@ namespace SolverClient
             {
 
             }
+            
+            if ((bool)RadioButton_Futoshiki.IsChecked)
+            {
+                _problemType = 1;
+            }
+            else if ((bool)RadioButton_Skyscraper.IsChecked)
+            {
+                _problemType = 2;
+            }
 
             Env.FILE_NAME_I = TextBox_FileName.Text;
 
@@ -84,6 +114,9 @@ namespace SolverClient
             TypeHeuristic2.IsChecked = false;
             TypeHeuristic3.IsChecked = false;
             TypeHeuristic4.IsChecked = false;
+            RadioButton_Skyscraper.IsChecked = false;
+            RadioButton_Futoshiki.IsChecked = false;
+            Label_SolutionCount.Content = "?";
             TextBox_FileName.Text = "test_futo_4_0.txt";
         }
 
@@ -92,12 +125,12 @@ namespace SolverClient
             _fileLoader = new FileLoader(Env.FILE_NAME_I);
             if (!_fileLoader.IsFileGood())
             {
-                _resultText = "Bad loading file";
+                //_resultText = "Bad loading file";
                 return false;
             }
             else
             {
-                _resultText = "file loaded;";
+                //_resultText = "file loaded;";
                 return true;
             }
         }
@@ -112,20 +145,60 @@ namespace SolverClient
 
         private void DisplayLoadedData()
         {
-            box = DataContainer.Instance;
+            _box = DataContainer.Instance;
             string resultText = "";
             
             //Console.WriteLine("_________________________________________________________");
-            resultText += $"Dimension: {box.DimensionOfProblem}\n\n";
-            resultText += box.Problem.ToString() + "\n";
-            resultText += box.Problem.RestrictionsToString();
+            resultText += $"Dimension: {_box.DimensionOfProblem}\n\n";
+            resultText += _box.ProblemFuto.ToString() + "\n";
+            resultText += _box.ProblemFuto.RestrictionsToString();
 
             TextBlock_Problem.Text = resultText;
 
         }
 
-        public void DisplaySolution(String htmlText)
+        private void SolveProblem()
         {
+            if (_problemType == 1)
+            {
+                BackTracking bct = new BackTracking();
+                _solutionsFuto = bct.FutoSolver(_box.ProblemFuto);
+                _iterations = bct.Iterations;
+            }
+            else if(_problemType == 2)
+            {
+
+            }
+        }
+
+        public void DisplaySolutions()
+        {
+            string resultText = "";
+            if (_solutionsFuto != null)
+            {
+                if (_solutionsFuto.Count == 0)
+                {
+                    resultText = "Empty";
+                }
+                foreach (Futoshiki f in _solutionsFuto)
+                {
+                    resultText += f.ToString() + "\n";
+                }
+
+                Label_SolutionCount.Content = _solutionsFuto.Count;
+
+                Label_IterationsNum.Content = _iterations;
+                Label_TimeEval.Content = _watch.ElapsedMilliseconds;
+
+                //resultText += "\nIterations: " + _iterations + "\n";
+                //resultText += "\nTime: " + _watch.ElapsedMilliseconds + "ms\n";
+
+
+                TextBlock_Result.Text = resultText;
+            }
+
+
+            
             //SolutionWindow.NavigateToString(htmlText);
 
         }
