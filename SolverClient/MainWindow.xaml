@@ -30,13 +30,13 @@
             </StackPanel>
 
         </GroupBox>
-        <Label Content="Searching Time (ms):" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,407,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
-        <Label Content="Solutions count:" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,497,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
-        <Label x:Name="Label_TimeEval" Content="000" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,447,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
-        <Label x:Name="Label_SolutionCount" Content="?" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,542,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
+        <Label Content="Searching Time (ms):" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,505,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
+        <Label Content="Solutions count:" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,409,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
+        <Label x:Name="Label_TimeEval" Content="000" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,545,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
+        <Label x:Name="Label_SolutionCount" Content="?" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,448,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
         <Button x:Name="Btn_Start" Content="Start" Grid.Column="1" HorizontalAlignment="Left" Margin="10,705,0,0" VerticalAlignment="Top" Width="180" Height="45" FontSize="18" Click="Btn_Start_Click"/>
         <Button x:Name="Btm_Clear" Content="Clear" Grid.Column="1" HorizontalAlignment="Left" Margin="202,705,0,0" VerticalAlignment="Top" Width="188" Height="45" FontSize="18" Click="Btm_Clear_Click"/>
-        <TextBox x:Name="TextBox_FileName" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,570,0,0" TextWrapping="Wrap" Text="test_futo_4_0.txt" VerticalAlignment="Top" Width="380" FontSize="20" FontWeight="Medium" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
+        <TextBox x:Name="TextBox_FileName" Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,570,0,0" TextWrapping="Wrap" Text="test_problemName_0_0.txt" VerticalAlignment="Top" Width="380" FontSize="20" FontWeight="Medium" AutomationProperties.IsOffscreenBehavior="Onscreen"/>
         <Label Content="Name of file to load: " Grid.Column="1" HorizontalAlignment="Left" Height="40" Margin="10,525,0,0" VerticalAlignment="Top" Width="380" Foreground="#FF86888F" FontSize="20"/>
         <ScrollViewer Grid.Column="2" Margin="10,25,10,19" VerticalScrollBarVisibility="Auto" Background="Black" AutomationProperties.IsColumnHeader="True">
             <TextBlock x:Name="TextBlock_Problem" Grid.Column="2"  TextWrapping="Wrap" Text="PROBLEM CONTENT" VerticalAlignment="Top" Foreground="White" FontSize="16" Cursor="Pen" HorizontalAlignment="Center"  />
@@ -54,8 +54,8 @@
                 </TransformGroup>
             </GridSplitter.RenderTransform>
         </GridSplitter>
-        <RadioButton x:Name="RadioButton_Futoshiki" Content="Futoshiki" Grid.Column="1" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType"/>
-        <RadioButton x:Name="RadioButton_Skyscraper" Content="Skyscraper" Grid.Column="1" HorizontalAlignment="Left" Margin="202,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType" />
+        <RadioButton x:Name="RadioButton_Futoshiki" Content="Futoshiki" Grid.Column="1" HorizontalAlignment="Left" Margin="10,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType" Checked="RadioButton_Futoshiki_Checked"/>
+        <RadioButton x:Name="RadioButton_Skyscraper" Content="Skyscraper" Grid.Column="1" HorizontalAlignment="Left" Margin="202,640,0,0" VerticalAlignment="Top" Foreground="#FFC7C3C3" FontSize="20" GroupName="ProblemType" Checked="RadioButton_Skyscraper_Checked" />
         <Label Content="Iterations number:" Grid.Column="3" HorizontalAlignment="Left" Height="40" Margin="10,595,0,0" VerticalAlignment="Top" Width="369" Foreground="#FF86888F" FontSize="20"/>
         <Label x:Name="Label_IterationsNum" Content="?" Grid.Column="3" HorizontalAlignment="Left" Height="45" Margin="10,640,0,0" VerticalAlignment="Top" Width="369" Foreground="White" FontSize="24"/>
 

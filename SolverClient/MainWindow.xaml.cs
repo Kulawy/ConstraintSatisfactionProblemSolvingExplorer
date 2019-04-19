@@ -30,11 +30,15 @@ namespace SolverClient
 
     public partial class MainWindow : Window
     {
+
+        private readonly string FILE_FUTO_TEMPLATE = "test_futo_4_0.txt";
+        private readonly string FILE_SKY_TEMPLATE = "test_sky_4_0.txt";
         private FileLoader _fileLoader;
-        //private string _resultText;
-        private int _problemType;
         private DataContainer _box;
         private List<Futoshiki> _solutionsFuto;
+        private int _problemType;
+
+        //private string _resultText;
 
         private long _iterations;
         
@@ -117,7 +121,7 @@ namespace SolverClient
             RadioButton_Skyscraper.IsChecked = false;
             RadioButton_Futoshiki.IsChecked = false;
             Label_SolutionCount.Content = "?";
-            TextBox_FileName.Text = "test_futo_4_0.txt";
+            TextBox_FileName.Text = "test_problemName_0_0.txt";
         }
 
         private bool DoLoad()
@@ -203,6 +207,14 @@ namespace SolverClient
 
         }
 
+        private void RadioButton_Futoshiki_Checked(object sender, RoutedEventArgs e)
+        {
+            TextBox_FileName.Text = FILE_FUTO_TEMPLATE;
+        }
 
+        private void RadioButton_Skyscraper_Checked(object sender, RoutedEventArgs e)
+        {
+            TextBox_FileName.Text = FILE_SKY_TEMPLATE;
+        }
     }
 }
